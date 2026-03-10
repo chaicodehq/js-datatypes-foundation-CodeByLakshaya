@@ -48,21 +48,69 @@
  *   areAllConfirmed(passengers)          // => true/false
  */
 export function findPassenger(passengers, name) {
-  // Your code here
+  if(!Array.isArray(passengers) || typeof name !== 'string'){
+    return undefined
+  }
+  let result = passengers.find(
+    passenger => typeof passenger.name === 'string' &&
+    passenger.name.toLowerCase() === name.toLowerCase()
+  );
+  return result;
 }
 
 export function getPassengerIndex(passengers, name) {
-  // Your code here
+  if (!Array.isArray(passengers) || typeof name !== "string") {
+    return -1;
+  }
+  let result = passengers.findIndex(
+    index => index.name &&
+    index.name.toLowerCase() === name.toLowerCase()
+  );
+  return result
 }
 
 export function isAnyWaitlisted(passengers) {
-  // Your code here
+  if (!Array.isArray(passengers) || passengers.length ==='') {
+    return false;
+  }
+  let result = passengers.some(
+    value => value.status ==='waitlisted'
+  )
+  return result;
 }
 
 export function areAllConfirmed(passengers) {
-  // Your code here
+  if (!Array.isArray(passengers) || passengers.length ===0) {
+    return false;
+  }
+  let result = passengers.every(
+    p => p.status ==='confirmed'
+  )
+  return result
+  
+// 4. areAllConfirmed(passengers)
+//  *      - .every() se check karo ki SAB passengers "confirmed" hain ya nahi
+//  *      - Agar passengers array nahi hai ya empty hai, return false
+//  *      - Example: areAllConfirmed([{status:"confirmed"}, {status:"confirmed"}]) => true
+//  *
+
 }
 
 export function getWaitlistedPassengers(passengers) {
-  // Your code here
+  if (!Array.isArray(passengers)) {
+    return [];
+  }
+  if(passengers.length === "") {
+    return false;
+  }
+  let result = passengers.filter(
+    p => p.status ==='waitlisted'
+  )
+  return result
+
+//    *   5. getWaitlistedPassengers(passengers)
+//  *      - .filter() se sirf "waitlisted" passengers return karo
+//  *      - Agar passengers array nahi hai, return []
+//  *      - Example: getWaitlistedPassengers([{name:"A",status:"confirmed"},{name:"B",status:"waitlisted"}])
+//  *                 => [{name:"B", status:"waitlisted"}]
 }

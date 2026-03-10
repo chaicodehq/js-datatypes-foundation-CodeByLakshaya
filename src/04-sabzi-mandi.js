@@ -48,21 +48,69 @@
  *   removeLastItem(["tamatar", "pyaaz", "mirchi"])   // => "mirchi"
  */
 export function addToCart(cart, item) {
-  // Your code here
+  if (Array.isArray(cart)=== false) {
+    return -1
+  }
+  if (item.length =="" || typeof item !== "string") {
+    return cart.length
+  }
+  cart.push(item) 
+  return cart.length;
 }
 
 export function addUrgentItem(cart, item) {
-  // Your code here
+  if (!Array.isArray(cart)) return [];
+  if (typeof item !== "string"||item.length===0) return cart;
+
+  cart.unshift(item);
+  return cart;
 }
 
 export function removeLastItem(cart) {
-  // Your code here
+  if(Array.isArray(cart)== false || cart.length===0) return undefined;
+  let last = cart.pop(-1)
+  return last;
+  /*3. removeLastItem(cart)
+ *      - .pop() se last sabzi remove karo
+ *      - Return: the removed item
+ *      - Agar cart not array ya empty hai, return undefined
+ *      - Example: removeLastItem(["tamatar", "pyaaz", "mirchi"]) => "mirchi"
+ *  */
 }
 
 export function isInCart(cart, item) {
   // Your code here
+  if (Array.isArray(cart) == false) {
+    return false;
+  }
+  let inside = cart.includes(item)
+  return inside;
+  /**4. isInCart(cart, item)
+ *      - .includes() se check karo ki item cart mein hai ya nahi
+ *      - Agar cart not array, return false
+ *      - Example: isInCart(["tamatar", "pyaaz"], "pyaaz") => true
+ *      - Example: isInCart(["tamatar", "pyaaz"], "mirchi") => false
+ * */
 }
 
 export function mergeCarts(cart1, cart2) {
   // Your code here
+  if (Array.isArray(cart1) == false) {
+    cart1 = [];
+  }
+
+  if( Array.isArray(cart2) == false){
+    cart2 = [];
+  }
+
+  let shopping  = cart1.concat(cart2);
+  return shopping;
+  /**
+   * 5. mergeCarts(cart1, cart2)
+ *      - .concat() se do carts ko combine karo
+ *      - Return: new merged array
+ *      - Agar koi bhi array nahi hai, usse empty array [] maan lo
+ *      - Example: mergeCarts(["tamatar"], ["mirchi", "adrak"]) => ["tamatar", "mirchi", "adrak"]
+ *
+   */
 }

@@ -86,7 +86,6 @@ export function getFirstAndLastChar(order) {
   if (typeof order !== "string") {
     return null;
   }
-
   let ord = order.trim();
 
   if (ord.length === 0) {
